@@ -1,13 +1,13 @@
 
 var table = [
-		"Team 1", "Hydrogen", "1.00794", 0, 1,
-		"Team 2", "Helium", "4.002602", 1, 1,
-		"Team 3", "Lithium", "6.941", 0, 2,
-		"Team 4", "Beryllium", "9.012182", 1, 2,
-		"Team 5", "Boron", "10.811", 3, 1,
-		"Team 6", "Carbon", "12.0107", 4, 1,
-		"Team 7", "Nitrogen", "14.0067", 3, 2,
-		"Team 8", "Oxygen", "15.9994", 4, 2
+		"Hydrogen", "Team 1", "1.00794", 0, 1,
+		"Helium", "Team 2", "4.002602", 1, 1,
+		"Lithium", "Team 3", "6.941", 0, 2,
+		"Beryllium", "Team 4", "9.012182", 1, 2,
+		"Boron", "Team 5", "10.811", 3, 1,
+		"Carbon", "Team 6", "12.0107", 4, 1,
+		"Nitrogen", "Team 7", "14.0067", 3, 2,
+		"Oxygen", "Team 8", "15.9994", 4, 2
 ];
 
 var camera, scene, renderer;
@@ -20,7 +20,7 @@ var targets = { table: [], sphere: [], helix: [], grid: [] };
 function init() {
 
 		camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 10000 );
-		camera.position.z = 3000;
+		camera.position.z = 2000;
 
 		scene = new THREE.Scene();
 
@@ -60,7 +60,7 @@ function init() {
         var y = table[i+4];
 				var object = new THREE.Object3D();
 				object.position.x = ( x*500 ) - 1000;
-				object.position.y = - ( y*180 ) + 990;
+				object.position.y = - ( y*180 ) + 400;
 
 				targets.table.push( object );
 
@@ -95,13 +95,13 @@ function init() {
 
 		for ( var i = 0, l = objects.length; i < l; i ++ ) {
 
-				var phi = i * 0.175 + Math.PI;
+				var phi = i * 0.25 * Math.PI;
 
 				var object = new THREE.Object3D();
 
-				object.position.x = 900 * Math.sin( phi );
+				object.position.x = 1000 * Math.sin( phi );
 				object.position.y = - ( i * 8 ) + 450;
-				object.position.z = 900 * Math.cos( phi );
+				object.position.z = 1000 * Math.cos( phi );
 
 				vector.x = object.position.x * 2;
 				vector.y = object.position.y;
@@ -119,9 +119,9 @@ function init() {
 
 				var object = new THREE.Object3D();
 
-				object.position.x = ( ( i % 5 ) * 400 ) - 800;
-				object.position.y = ( - ( Math.floor( i / 5 ) % 5 ) * 400 ) + 800;
-				object.position.z = ( Math.floor( i / 25 ) ) * 1000 - 2000;
+				object.position.x = ( ( i % 2 ) * 500 ) - 500;
+				object.position.y = ( - ( Math.floor( i / 2 ) % 2 ) * 400 ) + 400;
+				object.position.z = ( Math.floor( i / 4 ) ) * 1000 - 2000;
 
 				targets.grid.push( object );
 
